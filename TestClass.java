@@ -1,15 +1,14 @@
 package lesson3;
 
-import lesson1.Product;
-import lesson1.ProductAlreadyExistException;
-import lesson1.ProductCatalog;
-
 public class TestClass {
     public static void main(String[] args) {
-        lesson1.Product prod1 = new lesson1.Product(12345, "apple", 236.77, "Lenta");
-        lesson1.Product prod2 = new lesson1.Product(12345, "pear", 236.77, "Lenta");
-        lesson1.Product prod3 = new Product(12345, "apple", 236.77, "Ashan");
-        lesson1.ProductCatalog lst = new ProductCatalog();
+        Product prod1 = new Product(12345, "apple", 236.77, "Lenta");
+        Product prod2 = new Product(123456, "pear", 236.77, "Lenta");
+        Product prod3 = new Product(1234567, "apple", 236.77, "Ashan");
+        Product prod4 = new Product(12345, "", 3456, "Ashan");
+        Product prod5 = new Product(123, "potato", 3456, "Ashan");
+        Product prod6 = new Product(123456, "banana", 236.77, "Lenta");
+        ProductCatalog lst = new ProductCatalog();
         System.out.println(lst.getAllProducts());
         try {
             lst.createProduct(prod1);
@@ -17,8 +16,27 @@ public class TestClass {
             lst.createProduct(prod3);
         }
         catch (ProductAlreadyExistException e) {
-            e.printStackTrace("ProductAlreadyExistException: данный продукт уже существует");
+            e.printStackTrace("ProductAlreadyException");
         }
+        lst.printInf();
+        try {
+            lst.updateProduct(prod6);
+            lst.updateProduct(prod4);
+        }
+        catch (ProductNotValidException e) {
+            e.printStackTrace("ProductNotValidException");
+        }
+        lst.printInf();
         System.out.println(lst.getAllProducts());
+
+        try {
+            lst.deleteProduct(12345);
+            lst.printInf();
+            lst.deleteProduct(987654);
+            lst.updateProduct(prod5);
+        }
+        catch (ProductNotValidException e) {
+            e.printStackTrace("ProductNotValidException");
+        }
     }
 }

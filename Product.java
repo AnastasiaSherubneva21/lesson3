@@ -38,6 +38,6 @@ public class Product {
     }
 
     public void printInfo() {
-        System.out.println("ID: " + id + " Название: " + name + " Вес: " + weight + "Производитель: " + supplier);
+        System.out.println("ID: " + id + " Название: " + name + " Вес: " + weight + " Производитель: " + supplier);
     }
 }
