@@ -32,7 +32,7 @@ public class TestClass {
         try {
             lst.deleteProduct(12345);
             lst.printInf();
-            lst.deleteProduct(987654);
+            //lst.deleteProduct(987654);
             lst.updateProduct(prod5);
         }
         catch (ProductNotValidException e) {
